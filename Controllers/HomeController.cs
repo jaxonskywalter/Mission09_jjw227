@@ -30,7 +30,10 @@ namespace JeffWho.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks =
+                        (Category == null
+                            ? repo.Books.Count()
+                            : repo.Books.Where(x => x.Category == Category).Count()),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
                 }

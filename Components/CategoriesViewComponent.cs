@@ -18,6 +18,8 @@ namespace JeffWho.Components
 
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedCategory = RouteData?.Values["Category"];
+
             var categories = repo.Books
                 .Select(x => x.Category)
                 .Distinct()
